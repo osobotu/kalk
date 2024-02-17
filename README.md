@@ -1,0 +1,3 @@
+# KALK
+
+Simple JS calculator

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>KALK</title>
+        <link rel="stylesheet" href="styles/styles.css">
+        <script src="app/app.js"></script>
+    </head>
+    <body>
+        <div class="calc-body">
+            <div class="display">0</div>
+            <div class="keypad">
+                <div class="row" id="row1">
+                    <div class="button" onclick="clearDisplayValue()">AC</div>
+                    <div class="button">+/-</div>
+                    <div class="button">%</div>
+                    <div class="button unselected" id="divide" onclick="setOperatorValue('divide')">/</div>
+                </div>
+                <div class="row" id="row2">
+                    <div class="button" onclick="setDisplayValue('7')">7</div>
+                    <div class="button" onclick="setDisplayValue('8')">8</div>
+                    <div class="button" onclick="setDisplayValue('9')">9</div>
+                    <div class="button unselected" id="multiply" onclick="setOperatorValue('multiply')">*</div>
+                </div>
+                <div class="row" id="row3">
+                    <div class="button" onclick="setDisplayValue('4')">4</div>
+                    <div class="button" onclick="setDisplayValue('5')">5</div>
+                    <div class="button" onclick="setDisplayValue('6')">6</div>
+                    <div class="button unselected" id="subtract" onclick="setOperatorValue('subtract')">-</div>
+                </div>
+                <div class="row" id="row4">
+                    <div class="button" onclick="setDisplayValue('1')">1</div>
+                    <div class="button" onclick="setDisplayValue('2')">2</div>
+                    <div class="button" onclick="setDisplayValue('3')">3</div>
+                    <div class="button unselected" id="add" onclick="setOperatorValue('add')">+</div>
+                </div>
+                <div class="row" id="row5">
+                    <div class="button" onclick="setDisplayValue('0')">0</div>
+                    <div class="button">.</div>
+                    <div class="button unselected">=</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
