@@ -1,7 +1,7 @@
 // arithmetic methods
 const add = (num1, num2) => num1 + num2;
 const subtract = (num1, num2) => num1 - num2;
-const divide = (num1, num2) => num1 / num2;
+const divide = (num1, num2) => (num1 / num2).toFixed(3);
 const multiply = (num1, num2) => num1 * num2;
 
 const OPERATORS = new Map([
@@ -30,8 +30,6 @@ let num1 = "";
 let num2 = "";
 let operator = "";
 let currentState = "num1";
-
-// let displayValue = "";
 
 const handleNumberInput = function (number) {
   if (currentState === "num1" || currentState === "num2") {
@@ -101,7 +99,6 @@ const setOperatorValue = function (val) {
 };
 
 const clearDisplayValue = function () {
-  displayValue = "";
   num1 = "";
   num2 = "";
   operator = "";
