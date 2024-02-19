@@ -49,16 +49,11 @@ body {
     background-color: white;
 }
 
-/* .button.operand {
+.button.operation {
     background-color: lightcyan;
-} */
-
-.selected {
-    background-color: teal;
 }
-
-.unselected {
-    background-color: lightcyan;
+.operation.selected {
+    background-color: teal;
 }
 
 #row5>:first-child {
