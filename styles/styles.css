@@ -8,6 +8,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 150px;
     height: 100vh; 
     background-color: lightseagreen;
 }
@@ -58,4 +60,8 @@ body {
 
 #row5>:first-child {
     flex: 2;
+}
+
+a {
+    text-decoration: none;
 }
