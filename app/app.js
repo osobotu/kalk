@@ -1,8 +1,8 @@
 // arithmetic methods
 const add = (num1, num2) => num1 + num2;
 const subtract = (num1, num2) => num1 - num2;
-const divide = (num1, num2) => (num1 / num2).toFixed(3);
-const multiply = (num1, num2) => num1 * num2;
+const divide = (num1, num2) => (num1 / num2).toFixed(5);
+const multiply = (num1, num2) => (num1 * num2).toFixed(5);
 
 const OPERATORS = new Map([
   ["add", "+"],
@@ -31,6 +31,16 @@ let num2 = "";
 let operator = "";
 let currentState = "num1";
 
+const hasDecimal = function (number) {
+  let n = number.length;
+  for (let i = 0; i < n; i++) {
+    if (number[i] === ".") {
+      return true;
+    }
+  }
+  return false;
+};
+
 const handleNumberInput = function (number) {
   if (currentState === "num1") {
     if (num1.length < 15) {
@@ -40,6 +50,20 @@ const handleNumberInput = function (number) {
   } else {
     if (num2.length < 15) {
       num2 += number;
+      updateDisplay(num2);
+    }
+  }
+};
+
+const handleDecimalPointInput = function () {
+  if (currentState === "num1") {
+    if (!hasDecimal(num1)) {
+      num1 = num1 + ".";
+      updateDisplay(num1);
+    }
+  } else {
+    if (!hasDecimal(num2)) {
+      num2 += ".";
       updateDisplay(num2);
     }
   }
@@ -109,8 +133,6 @@ const updateOperatorDisplay = function () {
     }
   });
 };
-
-updateOperatorDisplay();
 
 const setOperatorValue = function (val) {
   // set operator
