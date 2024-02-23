@@ -32,20 +32,16 @@ let operator = "";
 let currentState = "num1";
 
 const handleNumberInput = function (number) {
-  if (currentState === "num1" || currentState === "num2") {
-    if (currentState === "num1") {
-      if (num1.length < 15) {
-        num1 += number;
-        updateDisplay(num1);
-      }
-    } else {
-      if (num2.length < 15) {
-        num2 += number;
-        updateDisplay(num2);
-      }
+  if (currentState === "num1") {
+    if (num1.length < 15) {
+      num1 += number;
+      updateDisplay(num1);
     }
-    console.log(`${currentState}`);
-    // currentState === "num1" ? (num1 += number) : (num2 += number);
+  } else {
+    if (num2.length < 15) {
+      num2 += number;
+      updateDisplay(num2);
+    }
   }
 };
 
@@ -54,22 +50,44 @@ const handleOperatorInput = function (op) {
     updateOperatorDisplay();
     operator = OPERATORS.get(op);
     currentState = "num2";
-    console.log(operator);
+  } else {
   }
 };
 
 const handleEquals = function () {
-  console.log("handle equals");
   if (currentState === "num2" && num2 !== "") {
     // Perform calculation
     const result = operate(operator, num1, num2);
-    // console.log(`result: ${result}`);
     updateDisplay(result);
     // Reset calculator state
     num1 = result.toString();
     operator = "";
     num2 = "";
     currentState = "num1";
+  }
+};
+
+const handlePercentage = function () {
+  if (currentState === "num1") {
+    const result = operate(OPERATORS.get("divide"), num1, 100);
+    updateDisplay(result);
+    num1 = result.toString();
+  } else {
+    const result = operate(OPERATORS.get("divide"), num2, 100);
+    updateDisplay(result);
+    num2 = result.toString();
+  }
+};
+
+const handlePositiveOrNegative = function () {
+  if (currentState === "num1") {
+    const result = operate(OPERATORS.get("multiply"), num1, -1);
+    updateDisplay(result);
+    num1 = result.toString();
+  } else {
+    const result = operate(OPERATORS.get("multiply"), num2, -1);
+    updateDisplay(result);
+    num2 = result.toString();
   }
 };
 
@@ -91,6 +109,8 @@ const updateOperatorDisplay = function () {
     }
   });
 };
+
+updateOperatorDisplay();
 
 const setOperatorValue = function (val) {
   // set operator
